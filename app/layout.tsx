@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Cormorant_Garamond } from "next/font/google";
 import SmoothScroll from "@/components/SmoothScroll";
 import Navbar from "@/components/Navbar";
+import { BookingProvider } from "@/lib/BookingContext";
+import BookingModal from "@/components/BookingModal";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -32,56 +34,59 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${cormorantGaramond.variable} antialiased`}
       >
-        <SmoothScroll />
-        <Navbar />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Dentist",
-              "name": "Celestia Dental",
-              "image": "https://celestiadental.com/og-image.jpg",
-              "description": "Luxurious, high-tech dental boutique in Ahmedabad offering painless laser treatments and cosmetic makeovers.",
-              "address": {
-                "@type": "PostalAddress",
-                "streetAddress": "Satellite Road, Near Iscon Cross Roads",
-                "addressLocality": "Ahmedabad",
-                "addressRegion": "GJ",
-                "postalCode": "380015",
-                "addressCountry": "IN"
-              },
-              "geo": {
-                "@type": "GeoCoordinates",
-                "latitude": 23.0300,
-                "longitude": 72.5180
-              },
-              "url": "https://celestiadental.com",
-              "telephone": "+919876543210",
-              "priceRange": "$$$",
-              "openingHoursSpecification": [
-                {
-                  "@type": "OpeningHoursSpecification",
-                  "dayOfWeek": [
-                    "Monday",
-                    "Tuesday",
-                    "Wednesday",
-                    "Thursday",
-                    "Friday",
-                    "Saturday"
+        <BookingProvider>
+            <SmoothScroll />
+            <Navbar />
+            <BookingModal />
+            <script
+              type="application/ld+json"
+              dangerouslySetInnerHTML={{
+                __html: JSON.stringify({
+                  "@context": "https://schema.org",
+                  "@type": "Dentist",
+                  "name": "Celestia Dental",
+                  "image": "https://celestiadental.com/og-image.jpg",
+                  "description": "Luxurious, high-tech dental boutique in Ahmedabad offering painless laser treatments and cosmetic makeovers.",
+                  "address": {
+                    "@type": "PostalAddress",
+                    "streetAddress": "Satellite Road, Near Iscon Cross Roads",
+                    "addressLocality": "Ahmedabad",
+                    "addressRegion": "GJ",
+                    "postalCode": "380015",
+                    "addressCountry": "IN"
+                  },
+                  "geo": {
+                    "@type": "GeoCoordinates",
+                    "latitude": 23.0300,
+                    "longitude": 72.5180
+                  },
+                  "url": "https://celestiadental.com",
+                  "telephone": "+919876543210",
+                  "priceRange": "$$$",
+                  "openingHoursSpecification": [
+                    {
+                      "@type": "OpeningHoursSpecification",
+                      "dayOfWeek": [
+                        "Monday",
+                        "Tuesday",
+                        "Wednesday",
+                        "Thursday",
+                        "Friday",
+                        "Saturday"
+                      ],
+                      "opens": "10:00",
+                      "closes": "20:00"
+                    }
                   ],
-                  "opens": "10:00",
-                  "closes": "20:00"
-                }
-              ],
-              "sameAs": [
-                "https://www.instagram.com/celestiadental",
-                "https://www.facebook.com/celestiadental"
-              ]
-            }),
-          }}
-        />
-        {children}
+                  "sameAs": [
+                    "https://www.instagram.com/celestiadental",
+                    "https://www.facebook.com/celestiadental"
+                  ]
+                }),
+              }}
+            />
+            {children}
+        </BookingProvider>
       </body>
     </html>
   );

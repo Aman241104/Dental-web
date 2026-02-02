@@ -6,6 +6,7 @@ import { OrbitControls, Environment } from "@react-three/drei";
 import { gsap, ScrollTrigger, useGSAP } from "@/lib/gsapConfig";
 import MagneticButton from "./MagneticButton";
 import { ArrowRight, Star } from "lucide-react";
+import { useBooking } from "@/lib/BookingContext";
 
 import ToothModel from "./ToothModel";
 import Stats from "./Stats";
@@ -13,6 +14,7 @@ import Stats from "./Stats";
 export default function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLDivElement>(null);
+  const { openBooking } = useBooking();
 
   useGSAP(
     () => {
@@ -106,13 +108,12 @@ export default function Hero() {
                    {/* CTA */}
                    <div className="hero-cta pt-4">
                         <MagneticButton>
-                            <a 
-                                href="https://wa.me/919876543210?text=Hello%2C%20I%20would%20like%20to%20book%20an%20appointment."
-                                target="_blank"
-                                className="flex items-center gap-4 bg-navy text-white px-8 py-4 rounded-full font-medium text-lg hover:bg-blue-600 hover:text-white transition-colors duration-300 shadow-lg shadow-navy/20"
+                            <button 
+                                onClick={openBooking}
+                                className="flex items-center gap-4 bg-navy text-white px-8 py-4 rounded-full font-medium text-lg hover:bg-blue-600 hover:text-white transition-colors duration-300 shadow-lg shadow-navy/20 cursor-pointer"
                             >
                                 Book Now <ArrowRight size={20} />
-                            </a>
+                            </button>
                         </MagneticButton>
                    </div>
                    

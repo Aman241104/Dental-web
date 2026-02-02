@@ -5,9 +5,11 @@ import { useRef } from "react";
 import { useGSAP } from "@/lib/gsapConfig";
 import MagneticButton from "./MagneticButton";
 import gsap from "gsap";
+import { useBooking } from "@/lib/BookingContext";
 
 export default function Navbar() {
   const navRef = useRef<HTMLDivElement>(null);
+  const { openBooking } = useBooking();
 
   useGSAP(() => {
     gsap.from(navRef.current, {
@@ -63,13 +65,12 @@ export default function Navbar() {
 
         {/* CTA */}
         <MagneticButton>
-            <Link 
-                href="https://wa.me/919876543210?text=Hello%2C%20I%20would%20like%20to%20book%20an%20appointment."
-                target="_blank"
-                className="relative inline-flex items-center justify-center px-8 py-3 bg-navy rounded-full text-xs font-bold text-white uppercase tracking-widest hover:bg-black transition-colors duration-300 shadow-md shadow-navy/20"
+            <button 
+                onClick={openBooking}
+                className="relative inline-flex items-center justify-center px-8 py-3 bg-navy rounded-full text-xs font-bold text-white uppercase tracking-widest hover:bg-black transition-colors duration-300 shadow-md shadow-navy/20 cursor-pointer"
             >
                  Book Online
-            </Link>
+            </button>
         </MagneticButton>
       </div>
     </nav>

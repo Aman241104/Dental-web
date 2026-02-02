@@ -7,11 +7,13 @@ import { gsap, useGSAP } from "@/lib/gsapConfig";
 import MagneticButton from "./MagneticButton";
 import { ArrowRight } from "lucide-react";
 import ToothModel from "./ToothModel";
+import { useBooking } from "@/lib/BookingContext";
 
 export default function Philosophy() {
   const containerRef = useRef<HTMLDivElement>(null);
   const textLeftRef = useRef<HTMLDivElement>(null);
   const textRightRef = useRef<HTMLDivElement>(null);
+  const { openBooking } = useBooking();
 
   useGSAP(
     () => {
@@ -92,7 +94,10 @@ export default function Philosophy() {
              </h2>
 
              <MagneticButton>
-                <button className="flex items-center gap-3 bg-blue-600 text-white px-8 py-3 rounded-full font-medium text-sm hover:bg-blue-700 transition-all duration-300 shadow-lg shadow-blue-600/30">
+                <button 
+                  onClick={openBooking}
+                  className="flex items-center gap-3 bg-blue-600 text-white px-8 py-3 rounded-full font-medium text-sm hover:bg-blue-700 transition-all duration-300 shadow-lg shadow-blue-600/30 cursor-pointer icon-hover-move"
+                >
                     Schedule a visit <ArrowRight size={16} />
                 </button>
              </MagneticButton>
