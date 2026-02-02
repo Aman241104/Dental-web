@@ -19,12 +19,11 @@ export default function Philosophy() {
     () => {
       // 1. Text Reveal Stagger
       gsap.fromTo([textLeftRef.current, textRightRef.current],
-        { y: 50, opacity: 0, filter: "blur(5px)" },
+        { y: 50, opacity: 0 },
         {
           y: 0,
           opacity: 1,
-          filter: "blur(0px)",
-          duration: 1.2,
+          duration: 1.0,
           stagger: 0.2,
           ease: "power2.out",
           scrollTrigger: {
@@ -75,7 +74,7 @@ export default function Philosophy() {
         {/* Center 3D Element (R3F Canvas) */}
         <div className="relative z-10 flex-1 w-full h-[50vh] md:h-[60vh] flex items-center justify-center">
             <div className="w-full h-full relative cursor-grab active:cursor-grabbing">
-                <Canvas camera={{ position: [0, 0, 5], fov: 45 }}>
+                <Canvas dpr={[1, 2]} camera={{ position: [0, 0, 5], fov: 45 }}>
                     <ambientLight intensity={0.6} />
                     <spotLight position={[5, 10, 5]} angle={0.15} penumbra={1} intensity={1} castShadow />
                     <Environment preset="city" />

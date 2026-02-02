@@ -22,22 +22,22 @@ export default function Hero() {
 
       // 1. Text Blur-in Stagger (Headline)
       tl.fromTo(".hero-line", 
-        { y: 50, opacity: 0, filter: "blur(10px)" },
-        { y: 0, opacity: 1, filter: "blur(0px)", duration: 1.5, stagger: 0.15, ease: "power3.out" }
+        { y: 50, opacity: 0 },
+        { y: 0, opacity: 1, duration: 1.2, stagger: 0.1, ease: "power3.out" }
       );
 
       // 2. Subtext Fade in
       tl.fromTo(".hero-subtext",
-        { opacity: 0, y: 20 },
+        { opacity: 0, y: 30 },
         { opacity: 1, y: 0, duration: 1, ease: "power2.out" },
-        "-=1.0"
+        "-=0.8"
       );
       
       // 3. CTA & Stats Fade in
       tl.fromTo([".hero-cta", ".hero-stat"],
         { opacity: 0, y: 20 },
         { opacity: 1, y: 0, duration: 1, stagger: 0.1, ease: "power2.out" },
-        "-=0.5"
+        "-=0.6"
       );
       
       // Scroll text parallax - Subtle movement of text while scrolling
@@ -92,7 +92,7 @@ export default function Hero() {
               {/* Left Column: Text Content */}
               <div ref={textRef} className="flex flex-col items-start space-y-8 pt-20 md:pt-0">
                    {/* Headline */}
-                   <h1 className="text-7xl md:text-8xl lg:text-9xl font-serif leading-[0.9] tracking-tight text-navy">
+                   <h1 className="text-7xl md:text-8xl lg:text-9xl font-serif leading-[0.9] tracking-tight text-navy will-change-transform">
                       <span className="hero-line block">Exceptional</span>
                       <div className="hero-line flex flex-wrap gap-x-4 items-baseline">
                           <span className="text-blue-600 font-sans font-light tracking-tighter italic">Dental</span>
@@ -101,12 +101,12 @@ export default function Hero() {
                    </h1>
 
                    {/* Subtext */}
-                   <p className="hero-subtext text-lg md:text-xl font-sans text-navy/70 max-w-md leading-relaxed">
+                   <p className="hero-subtext text-lg md:text-xl font-sans text-navy/70 max-w-md leading-relaxed will-change-transform">
                       With our team of experienced dentists and state-of-the-art technology, we deliver comprehensive treatments.
                    </p>
 
                    {/* CTA */}
-                   <div className="hero-cta pt-4">
+                   <div className="hero-cta pt-4 will-change-transform">
                         <MagneticButton>
                             <button 
                                 onClick={openBooking}
@@ -118,7 +118,7 @@ export default function Hero() {
                    </div>
                    
                    {/* Stats Row */}
-                   <div className="hero-stat flex items-center gap-12 pt-12 border-t border-navy/10 mt-8 w-full">
+                   <div className="hero-stat flex items-center gap-12 pt-12 border-t border-navy/10 mt-8 w-full will-change-transform">
                        <div className="flex items-center gap-4">
                            <span className="text-4xl font-serif text-navy">13</span>
                            <span className="text-sm text-navy/60 font-sans leading-tight">Achieve Your<br/>Dream Smile</span>
@@ -135,7 +135,7 @@ export default function Hero() {
               {/* Right Column: 3D Centerpiece (R3F Canvas) */}
               <div id="tooth-container" className="relative w-full h-[60vh] md:h-full hidden md:flex items-center justify-center z-50">
                   <div className="w-full h-full relative cursor-grab active:cursor-grabbing">
-                      <Canvas camera={{ position: [0, 0, 5], fov: 45 }}>
+                      <Canvas dpr={[1, 2]} camera={{ position: [0, 0, 5], fov: 45 }}>
                           <ambientLight intensity={0.6} />
                           <spotLight position={[5, 10, 5]} angle={0.15} penumbra={1} intensity={1} castShadow />
                           <Environment preset="city" />
