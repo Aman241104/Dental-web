@@ -13,14 +13,14 @@ const cases = [
   {
     id: 2,
     title: "Full Mouth Rehabilitation",
-    before: "/placeholder-before-2.jpg",
-    after: "/placeholder-after-2.jpg",
+    before: "/placeholder-before-1.jpg", // Reusing for now as we only have 1 pair
+    after: "/placeholder-after-1.jpg",
   },
   {
     id: 3,
     title: "Invisalign Correction",
-    before: "/placeholder-before-3.jpg",
-    after: "/placeholder-after-3.jpg",
+    before: "/placeholder-before-1.jpg", // Reusing for now
+    after: "/placeholder-after-1.jpg",
   },
 ];
 

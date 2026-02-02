@@ -86,15 +86,21 @@ export default function Services() {
                 </div>
             </div>
 
-            {/* 6. Dental Surgery */}
-            <div className="service-item group relative bg-white border-2 border-blue-600 p-6 md:p-8 rounded-[2rem] md:rounded-[2.5rem] min-h-[220px] md:min-h-[320px] flex flex-col justify-between transition-all hover:shadow-xl hover:shadow-blue-900/5 cursor-pointer">
-                <div>
-                    <h3 className="text-2xl md:text-3xl text-blue-600 font-medium leading-tight mb-2">Dental<br/>Surgery</h3>
-                    <span className="inline-block md:hidden text-xs font-semibold uppercase tracking-wider text-blue-400 mt-2">Learn More</span>
+            {/* 6. Dental Surgery - Patient Care Featured */}
+            <div className="service-item group relative bg-navy overflow-hidden p-6 md:p-8 rounded-[2rem] md:rounded-[2.5rem] min-h-[220px] md:min-h-[320px] flex flex-col justify-between shadow-xl shadow-navy/10 cursor-pointer">
+                {/* Background Image */}
+                <div className="absolute inset-0 z-0">
+                   <img src="/patient-care.jpg" alt="Dental Surgery" className="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-700" />
+                   <div className="absolute inset-0 bg-gradient-to-t from-navy/90 via-navy/50 to-transparent" />
+                </div>
+
+                <div className="relative z-10">
+                    <h3 className="text-2xl md:text-3xl text-white font-medium leading-tight mb-2">Dental<br/>Surgery</h3>
+                    <span className="inline-block md:hidden text-xs font-semibold uppercase tracking-wider text-blue-200 mt-2">Learn More</span>
                 </div>
                 
-                <div className="absolute bottom-6 right-6 md:bottom-8 md:right-8 text-blue-600 group-hover:text-blue-700 transition-colors">
-                    <ArrowDownRight size={28} className="md:w-8 md:h-8" strokeWidth={2} />
+                <div className="relative z-10 absolute bottom-6 right-6 md:bottom-8 md:right-8 text-white/80 group-hover:text-white transition-colors">
+                    <ArrowDownRight size={28} className="md:w-8 md:h-8" strokeWidth={1.5} />
                 </div>
             </div>
 

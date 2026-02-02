@@ -46,17 +46,15 @@ export default function About() {
     >
       <div className="max-w-7xl mx-auto w-full px-6 md:px-20 grid md:grid-cols-2 gap-12 items-center">
         
-        {/* Transparent Video Placeholder */}
+        {/* Dentist Portrait */}
         <div ref={videoRef} className="relative h-[600px] w-full flex items-center justify-center">
-            <div className="relative w-full h-full bg-white rounded-[2.5rem] border border-blue-100 flex items-center justify-center overflow-hidden shadow-2xl shadow-blue-900/5">
-                <span className="text-blue-900/40 font-mono text-center px-4">
-                    [Transparent Video Placeholder]<br/>
-                    Dentist walking onto frame.<br/>
-                    (HEVC/WebM Alpha)
-                </span>
-                
-                {/* Fallback Image / Visual rep */}
-                 <div className="absolute bottom-0 w-3/4 h-3/4 bg-blue-50/50 rounded-t-full blur-xl" />
+            <div className="relative w-full h-full rounded-[2.5rem] border border-blue-100 overflow-hidden shadow-2xl shadow-blue-900/10">
+                {/* Optimized Image */}
+                <img 
+                    src="/dentist-portrait.jpg" 
+                    alt="Dr. A. Sharma" 
+                    className="w-full h-full object-cover"
+                />
             </div>
         </div>
 

@@ -73,7 +73,16 @@ export default function Hero() {
           
           {/* Background Ambience */}
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(0,255,171,0.05)_0%,transparent_50%)]" />
-          <div className="absolute inset-0 bg-[url('/noise.png')] opacity-[0.02] mix-blend-overlay pointer-events-none" />
+          {/* Main Hero Background Image Overlay */}
+          <div 
+            className="absolute inset-0 bg-[url('/hero-background.jpg')] bg-cover bg-center opacity-10 mix-blend-multiply pointer-events-none"
+            style={{
+                maskImage: "linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%)",
+                WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%)"
+            }} 
+          />
+          {/* Noise Texture Overlay */}
+          <div className="absolute inset-0 bg-[url('/noise.png')] opacity-[0.03] mix-blend-multiply bg-repeat pointer-events-none" />
 
           {/* Wrapper for Grid Layout */}
           <div className="relative z-10 w-full h-full max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">

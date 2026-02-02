@@ -7,13 +7,11 @@ import MagneticButton from "@/components/MagneticButton";
 export default function Location() {
   return (
     <section className="relative w-full h-[80vh] flex items-center justify-center overflow-hidden bg-navy">
-        {/* Background Map Placeholder */}
+        {/* Background Map/Facility */}
         <div className="absolute inset-0 z-0">
-             {/* Replace with actual Styled Google Map or Mapbox */}
-             <div className="w-full h-full bg-[url('/map-dark-placeholder.jpg')] bg-cover bg-center opacity-40 grayscale contrast-125" />
-             {/* Fallback pattern for now */}
-             <div className="w-full h-full absolute inset-0 bg-[radial-gradient(#1e293b_1px,transparent_1px)] bg-size-[16px_16px] opacity-20" />
-             <div className="absolute inset-0 bg-navy/60" /> {/* Overlay to darken */}
+             {/* Facility Image Background */}
+             <div className="w-full h-full bg-[url('/our-facility.jpg')] bg-cover bg-center opacity-40" />
+             <div className="absolute inset-0 bg-navy/70 mix-blend-multiply" /> 
         </div>
 
         <div className="relative z-10 w-full max-w-7xl px-6 grid md:grid-cols-2 gap-8 items-center">
