@@ -27,6 +27,8 @@ export default function Navbar() {
     { name: "About", href: "#about" },
     { name: "Gallery", href: "#gallery" },
     { name: "Assessment", href: "#assessment" },
+    { name: "Testimonials", href: "#testimonials" },
+    { name: "Contact", href: "#contact" },
   ];
 
   const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
@@ -50,13 +52,13 @@ export default function Navbar() {
         </Link>
 
         {/* Links (Independent Pills) */}
-        <div className="hidden md:flex items-center gap-3">
+        <div className="hidden md:flex items-center gap-1 lg:gap-2">
             {links.map((link) => (
                 <a 
                     key={link.name} 
                     href={link.href}
                     onClick={(e) => handleScroll(e, link.href)}
-                    className="px-6 py-2 rounded-full text-xs font-sans font-medium text-navy/70 border border-navy/10 hover:border-navy/30 hover:bg-navy/[0.02] hover:text-navy transition-all duration-300 cursor-pointer"
+                    className="px-3 lg:px-5 py-2 rounded-full text-xs font-sans font-medium text-navy/70 border border-navy/10 hover:border-navy/30 hover:bg-navy/[0.02] hover:text-navy transition-all duration-300 cursor-pointer whitespace-nowrap"
                 >
                     {link.name}
                 </a>
