@@ -7,8 +7,9 @@ const cases = [
   {
     id: 1,
     title: "Veneer Reconstruction",
-    before: "/placeholder-before-1.jpg", 
-    after: "/placeholder-after-1.jpg",   
+    before: "/vanner_before.png", 
+    after: "/vanner_after.png",
+    zoom: "150%",      
   },
   {
     id: 2,
@@ -19,12 +20,12 @@ const cases = [
   {
     id: 3,
     title: "Invisalign Correction",
-    before: "/placeholder-before-1.jpg", // Reusing for now
-    after: "/placeholder-after-1.jpg",
+    before: "/Invisalign_before.png",
+    after: "/Invisalign_after.png",
   },
 ];
 
-function BeforeAfterSlider({ before, after }: { before: string; after: string }) {
+function BeforeAfterSlider({ before, after, zoom = "cover" }: { before: string; after: string; zoom?: string }) {
   const [sliderPosition, setSliderPosition] = useState(50);
   const [isDragging, setIsDragging] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -73,7 +74,9 @@ function BeforeAfterSlider({ before, after }: { before: string; after: string })
             className="absolute inset-0 bg-cover bg-center"
             style={{ 
                 backgroundImage: `url('${after}')`,
-                backgroundColor: '#cbd5e1' // Fallback color
+                backgroundColor: '#cbd5e1', // Fallback color
+                backgroundSize: zoom,
+                backgroundPosition: "center"
              }}
         />
 
@@ -83,6 +86,8 @@ function BeforeAfterSlider({ before, after }: { before: string; after: string })
             style={{ 
                 backgroundImage: `url('${before}')`,
                 backgroundColor: '#94a3b8', // Fallback color
+                backgroundSize: zoom,
+                backgroundPosition: "center",
                 clipPath: `inset(0 ${100 - sliderPosition}% 0 0)`
             }}
         />
@@ -133,7 +138,7 @@ export default function Gallery() {
 
                    {/* Before/After Compoonent */}
                    <div className="w-full md:w-2/3 h-[50vh] min-h-[400px]">
-                       <BeforeAfterSlider before={items.before} after={items.after} />
+                       <BeforeAfterSlider before={items.before} after={items.after} zoom={items.zoom} />
                    </div>
                 </div>
             ))}

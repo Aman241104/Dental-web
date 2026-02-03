@@ -1,6 +1,6 @@
 "use client";
 
-import { MapPin, Phone, Instagram, Facebook, Monitor, ArrowUpRight } from "lucide-react";
+import { Instagram, Monitor, ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import MagneticButton from "@/components/MagneticButton";
 import { useState } from "react";
@@ -19,7 +19,7 @@ export default function ContactFooter() {
      const email = formData.email ? `(${formData.email})` : "";
      const inquiry = formData.inquiry || "I would like to book an appointment.";
      const baseMessage = `Hello, I'm ${name} ${email}. ${inquiry}`;
-     return `https://wa.me/919876543210?text=${encodeURIComponent(baseMessage)}`;
+     return `https://wa.me/916353070793?text=${encodeURIComponent(baseMessage)}`;
   };
 
   return (
@@ -33,21 +33,22 @@ export default function ContactFooter() {
         
         {/* LEFT COLUMN: Map Area with Leaf Shape */}
         <div className="relative w-full h-[500px] lg:h-auto min-h-[600px] bg-slate-200 overflow-hidden lg:rounded-tr-[120px] lg:rounded-br-[0px]">
-             {/* Map Placeholder matching reference aesthetic (Light Map) */}
-             <div className="absolute inset-0 bg-[url('/map-light-placeholder.jpg')] bg-cover bg-center opacity-60 grayscale contrast-125 mix-blend-multiply" />
+             <iframe 
+                src="https://maps.google.com/maps?q=Chahana+Dental+Studio+Ahmedabad&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                width="100%" 
+                height="100%" 
+                style={{ border: 0, filter: "grayscale(20%) contrast(1.2) opacity(0.9)" }} 
+                allowFullScreen 
+                loading="lazy" 
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Chahana Dental Studio Location"
+                className="w-full h-full"
+            />
              
-             {/* Map Overlay Pattern */}
-             <div className="absolute inset-0 bg-[radial-gradient(#94a3b8_1px,transparent_1px)] bg-size-[20px_20px] opacity-20" />
+             {/* Map Overlay Pattern (Optional: removed for clear view, or keep transparent) */}
+             {/* <div className="absolute inset-0 bg-[radial-gradient(#94a3b8_1px,transparent_1px)] bg-size-[20px_20px] opacity-20 pointer-events-none" /> */}
              
-             {/* Custom Marker */}
-             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center gap-2">
-                <div className="bg-navy text-white p-3 rounded-full shadow-xl">
-                    <MapPin size={24} fill="currentColor" />
-                </div>
-                <span className="font-medium text-navy bg-white/80 px-3 py-1 rounded-full text-xs shadow-sm backdrop-blur-sm">
-                    Celestia Dental
-                </span>
-             </div>
+             {/* Custom Marker (Removed as the map has its own pin) */}
         </div>
 
         {/* RIGHT COLUMN: Contact Form & Info */}
@@ -120,12 +121,12 @@ export default function ContactFooter() {
                 <div className="space-y-4 text-sm font-sans text-navy/80">
                     <div>
                         <h4 className="font-bold text-navy uppercase tracking-wider text-xs mb-1">Visit Us</h4>
-                        <p>Satellite Road, Ahmedabad</p>
+                        <p>205, 2nd floor, Shreekar avenue,<br/>Nr. Gopal Chowk Cross Road, Maninagar,<br/>Ahmedabad - 380008</p>
                     </div>
                     <div>
                         <h4 className="font-bold text-navy uppercase tracking-wider text-xs mb-1">Contact</h4>
-                        <p>+91 98765 43210</p>
-                        <p className="lowercase">hello@celestiadental.com</p>
+                        <p>+91 6353 070 793</p>
+                        <p className="lowercase">chahanadentalstudio@gmail.com</p>
                     </div>
                 </div>
 
@@ -139,11 +140,8 @@ export default function ContactFooter() {
 
                 {/* Socials */}
                 <div className="flex gap-4">
-                    <a href="#" className="w-10 h-10 flex items-center justify-center rounded-full bg-navy/5 hover:bg-blue-600 hover:text-white transition-all text-navy">
+                    <a href="https://www.instagram.com/chahanadentalstudio?igsh=MXVlaWp1dzVxNGZ2bg==" target="_blank" rel="noopener noreferrer" className="w-10 h-10 flex items-center justify-center rounded-full bg-navy/5 hover:bg-blue-600 hover:text-white transition-all text-navy">
                         <Instagram size={18} />
-                    </a>
-                    <a href="#" className="w-10 h-10 flex items-center justify-center rounded-full bg-navy/5 hover:bg-blue-600 hover:text-white transition-all text-navy">
-                        <Facebook size={18} />
                     </a>
                     <a href="#" className="w-10 h-10 flex items-center justify-center rounded-full bg-navy/5 hover:bg-blue-600 hover:text-white transition-all text-navy">
                         <Monitor size={18} />
@@ -157,7 +155,7 @@ export default function ContactFooter() {
       
       {/* Copyright Bar */}
       <div className="w-full py-4 text-center text-navy/30 text-xs font-mono uppercase tracking-widest bg-slate-100/50">
-        © 2026 Celestia Dental. All Rights Reserved.
+        © 2026 Chahana Dental Studio. All Rights Reserved.
       </div>
     </footer>
   );

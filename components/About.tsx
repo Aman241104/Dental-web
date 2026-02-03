@@ -51,7 +51,7 @@ export default function About() {
             <div className="relative w-full h-full rounded-[2.5rem] border border-blue-100 overflow-hidden shadow-2xl shadow-blue-900/10">
                 {/* Optimized Image */}
                 <img 
-                    src="/dentist-portrait.jpg" 
+                    src="/doctor_image.jpeg" 
                     alt="Dr. A. Sharma" 
                     className="w-full h-full object-cover"
                 />
@@ -62,7 +62,7 @@ export default function About() {
         <div ref={textRef} className="relative z-10 space-y-8">
             <h5 className="text-blue-600 uppercase tracking-widest font-sans font-bold text-sm">The Specialist</h5>
             <h2 className="text-5xl md:text-7xl font-sans font-bold leading-tight text-navy">
-                Dr. A. Sharma <br/>
+                Dr. Chahana Shah <br/>
                 <span className="text-blue-600 font-medium text-3xl block mt-2">MDS, Prosthodontist</span>
             </h2>
             <p className="text-xl font-sans text-navy/70 leading-relaxed max-w-lg">

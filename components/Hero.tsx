@@ -120,7 +120,6 @@ export default function Hero() {
                    {/* Stats Row */}
                    <div className="hero-stat flex items-center gap-12 pt-12 border-t border-navy/10 mt-8 w-full will-change-transform">
                        <div className="flex items-center gap-4">
-                           <span className="text-4xl font-serif text-navy">13</span>
                            <span className="text-sm text-navy/60 font-sans leading-tight">Achieve Your<br/>Dream Smile</span>
                        </div>
                        <div className="flex items-center gap-4">

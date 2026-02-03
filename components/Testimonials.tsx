@@ -1,19 +1,19 @@
 "use client";
 
 import { useRef } from "react";
-import { ChevronLeft, ChevronRight, User } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const testimonials = [
   {
     id: 1,
-    text: "I was looking for a dental clinic I could trust for a long time. I found it at Celestia! Professional approach to every client, quality treatment and pleasant atmosphere make this clinic unsurpassed. Highly recommended!",
+    text: "I was looking for a dental clinic I could trust for a long time. I found it at Chahana Dental Studio! Professional approach to every client, quality treatment and pleasant atmosphere make this clinic unsurpassed. Highly recommended!",
     name: "Anna P.",
     role: "Patient",
     initials: "AP"
   },
   {
     id: 2,
-    text: "Thanks to Celestia Dental, I regained confidence in myself. Their specialists did a great job with my teeth, and the consultation helped me understand how to care for them properly. Huge thanks for your work!",
+    text: "Thanks to Chahana Dental Studio, I regained confidence in myself. Their specialists did a great job with my teeth, and the consultation helped me understand how to care for them properly. Huge thanks for your work!",
     name: "Maxim L.",
     role: "Patient",
     initials: "ML"
@@ -69,7 +69,7 @@ export default function Testimonials() {
             >
               {/* Review Text */}
               <p className="text-lg md:text-xl font-sans leading-relaxed text-navy/80">
-                "{item.text}"
+                &quot;{item.text}&quot;
               </p>
 
               {/* User Profile */}

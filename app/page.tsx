@@ -9,13 +9,13 @@ import ContactFooter from "@/components/ContactFooter";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Best Dentist in Ahmedabad | Celestia Dental | Luxury Cosmetic Clinic",
-  description: "Experience pain-free dentistry at Celestia Dental, Ahmedabad's premier luxury clinic. Specializing in Laser RCT, Digital Smile Design, and Implants. 15+ years of expertise.",
+  title: "Best Dentist in Ahmedabad | Chahana Dental Studio | Luxury Cosmetic Clinic",
+  description: "Experience pain-free dentistry at Chahana Dental Studio, Ahmedabad's premier luxury clinic. Specializing in Laser RCT, Digital Smile Design, and Implants. 7+ years of expertise.",
   openGraph: {
-    title: "Celestia Dental | Luxury Boutique Tech Dentistry",
+    title: "Chahana Dental Studio | Luxury Boutique Tech Dentistry",
     description: "Where luxury meets technology. Transform your smile with Ahmedabad's leading cosmetic specialists.",
-    url: "https://celestiadental.com",
-    siteName: "Celestia Dental",
+    url: "https://chahanadentalstudio.com",
+    siteName: "Chahana Dental Studio",
     images: [
       {
         url: "/og-image.jpg",
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Celestia Dental | Best Dentist in Ahmedabad",
+    title: "Chahana Dental Studio | Best Dentist in Ahmedabad",
     description: "Luxury cosmetic dentistry and implants in Ahmedabad.",
     images: ["/og-image.jpg"],
   },

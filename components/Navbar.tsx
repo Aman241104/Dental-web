@@ -7,6 +7,7 @@ import MagneticButton from "./MagneticButton";
 import gsap from "gsap";
 import { useBooking } from "@/lib/BookingContext";
 import { Menu, X } from "lucide-react";
+import Image from "next/image";
 
 export default function Navbar() {
   const navRef = useRef<HTMLDivElement>(null);
@@ -97,9 +98,16 @@ export default function Navbar() {
         >
           {/* Logo - High Z-index to stay above menu if needed, or menu covers it */}
           <Link href="/" className="flex items-center gap-2 relative z-[1001]">
-              <span className={`text-2xl tracking-tighter font-medium font-serif transition-colors duration-300 ${isMobileMenuOpen ? 'text-navy' : 'text-navy'}`}>
-                  Celestia
-              </span>
+              <div className={`transition-opacity duration-300 ${isMobileMenuOpen ? 'opacity-100' : 'opacity-100'}`}>
+                  <Image 
+                    src="/logo.png" 
+                    alt="Chahana Dental Studio" 
+                    width={180} 
+                    height={60} 
+                    className="h-12 w-auto object-contain"
+                    priority
+                  />
+              </div>
           </Link>
 
           {/* ================= DESKTOP MENU (UNCHANGED) ================= */}

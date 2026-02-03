@@ -105,7 +105,7 @@ export default function Philosophy() {
         {/* Background Watermark */}
         <div className="absolute bottom-[-5%] left-0 w-[200%] pointer-events-none select-none opacity-5">
             <span className="watermark-text text-[20vw] font-bold font-sans text-navy whitespace-nowrap leading-none">
-                Celestia Smile — Soft. Defined.
+                Chahana Smile — Soft. Defined.
             </span>
         </div>
         
