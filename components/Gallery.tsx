@@ -14,10 +14,11 @@ const cases = [
   },
   {
     id: 2,
-    title: "Full Mouth Rehabilitation",
-    description: "Comprehensive restoration for a functional and beautiful smile. See how full mouth rehabilitation changes lives.",
-    before: "/placeholder-before-1.jpg", // Reusing for now as we only have 1 pair
-    after: "/placeholder-after-1.jpg",
+    title: "Crowns (Ceramic/Zirconia)",
+    description: "Restore the strength and appearance of your teeth with high-quality ceramic and zirconia crowns. Designed for durability and a natural look.",
+    before: "/crown_before.png", 
+    after: "/crown_after.png",
+    zoom: "150%",
   },
   {
     id: 3,
