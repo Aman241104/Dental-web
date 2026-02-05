@@ -205,9 +205,14 @@ export default function About() {
             </p>
             
             <div className="flex gap-4 pt-4">
-                <button className="px-8 py-4 rounded-full bg-blue-600 text-white hover:bg-blue-700 transition-all duration-300 font-medium shadow-lg shadow-blue-600/20">
-                    Read Bio
-                </button>
+                <a 
+                    href={`https://wa.me/919876543210?text=${encodeURIComponent("Hello, I would like to schedule a visit to Chahana Dental Studio.")}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-8 py-4 rounded-full bg-blue-600 text-white hover:bg-blue-700 transition-all duration-300 font-medium shadow-lg shadow-blue-600/20 inline-block"
+                >
+                    Schedule Your Visit Now
+                </a>
             </div>
         </div>
 
