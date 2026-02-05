@@ -154,8 +154,16 @@ export default function ContactFooter() {
       </div>
       
       {/* Copyright Bar */}
-      <div className="w-full py-4 text-center text-navy/30 text-xs font-mono uppercase tracking-widest bg-slate-100/50">
-        © 2026 Chahana Dental Studio. All Rights Reserved.
+      <div className="w-full py-4 px-6 flex flex-col md:flex-row justify-between items-center text-center md:text-left text-navy/30 text-xs font-mono uppercase tracking-widest bg-slate-100/50 gap-2">
+        <span>© 2026 Chahana Dental Studio. All Rights Reserved.</span>
+        <a 
+            href="https://wa.me/918104933816"
+            target="_blank"
+            rel="noopener noreferrer" 
+            className="hover:text-blue-600 transition-colors"
+        >
+            Developed by Gravity Media Marketing
+        </a>
       </div>
     </footer>
   );
