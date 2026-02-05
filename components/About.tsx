@@ -201,7 +201,7 @@ export default function About() {
                 <span className="text-blue-600 font-medium text-3xl block mt-2">Dentist</span>
             </h2>
             <p className="text-xl font-sans text-navy/70 leading-relaxed max-w-lg">
-                Merging bio-aesthetics with digital precision. Dr. Sharma approaches every case as a unique architectural challenge, ensuring harmony between function and form.
+                Dr. Chahana provides comprehensive dental care with a focus on aesthetics and function. She treats every patient with personalization, ensuring a comfortable experience and long-lasting healthy smiles.
             </p>
             
             <div className="flex gap-4 pt-4">

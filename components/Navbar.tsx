@@ -68,8 +68,8 @@ export default function Navbar() {
 
   const links = [
     { name: "Home", href: "#hero-section" },
-    { name: "Services", href: "#services" },
     { name: "About", href: "#about" },
+    { name: "Services", href: "#services" },
     { name: "Gallery", href: "#gallery" },
     { name: "Assessment", href: "#assessment" },
     { name: "Testimonials", href: "#testimonials" },

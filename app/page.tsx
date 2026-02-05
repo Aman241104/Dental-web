@@ -48,8 +48,8 @@ export default function Home() {
     <main className="flex flex-col min-h-screen">
       <Hero />
       <Philosophy />
-      <Services />
       <About />
+      <Services />
       <Gallery />
       <SmileAssessment />
       <Testimonials />
