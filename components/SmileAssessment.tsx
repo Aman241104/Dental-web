@@ -1,19 +1,19 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import { Check, ArrowRight, Smile, Zap, Activity } from "lucide-react";
+import { Check, ArrowRight, Activity, Smile, Search, Calendar, AlertCircle } from "lucide-react";
 import MagneticButton from "./MagneticButton";
 import clsx from "clsx";
 
-type Step = "entry" | "goal" | "anxiety" | "timeline" | "success";
+type Step = "entry" | "discomfort" | "concern" | "timeline" | "success";
 
 export default function SmileAssessment() {
   const [step, setStep] = useState<Step>("entry");
   const [answers, setAnswers] = useState({
-    goal: "",
-    anxiety: 50,
+    discomfort: "", // "Yes" | "No"
+    concern: "",
     timeline: "",
   });
 
@@ -31,32 +31,16 @@ export default function SmileAssessment() {
     );
   }, { scope: containerRef, dependencies: [step] });
 
-  // Background glow animation based on anxiety
-  const glowRef = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    if (step === "anxiety" && glowRef.current) {
-        // Map 0-100 to color interpolation logic
-        const progress = answers.anxiety / 100;
-        const color = gsap.utils.interpolate("#BFDBFE", "#FED7AA", progress); // blue-200 to orange-200
-        
-        gsap.to(glowRef.current, {
-            backgroundColor: color,
-            opacity: 0.2 + (progress * 0.1),
-            duration: 0.5
-        });
-    }
-  }, [step, answers.anxiety]);
+  const handleStart = () => setStep("discomfort");
 
-
-  const handleStart = () => setStep("goal");
-
-  const handleGoalSelect = (goal: string) => {
-    setAnswers((prev) => ({ ...prev, goal }));
-    setTimeout(() => setStep("anxiety"), 300); // Small delay for feedback
+  const handleDiscomfortSelect = (val: string) => {
+    setAnswers((prev) => ({ ...prev, discomfort: val }));
+    setTimeout(() => setStep("concern"), 300);
   };
 
-  const handleAnxietyChange = (val: number) => {
-    setAnswers((prev) => ({ ...prev, anxiety: val }));
+  const handleConcernSelect = (concern: string) => {
+    setAnswers((prev) => ({ ...prev, concern }));
+    setTimeout(() => setStep("timeline"), 300);
   };
 
   const handleTimelineSelect = (timeline: string) => {
@@ -70,8 +54,8 @@ export default function SmileAssessment() {
 
   const progressMap = {
     entry: 0,
-    goal: 25,
-    anxiety: 50,
+    discomfort: 25,
+    concern: 50,
     timeline: 75,
     success: 100,
   };
@@ -79,7 +63,7 @@ export default function SmileAssessment() {
   return (
     <section id="assessment" className="relative w-full py-0 flex items-center justify-center bg-slate-50 overflow-hidden min-h-[80vh]">
       {/* Background Ambience */}
-      <div ref={glowRef} className="absolute inset-0 bg-blue-50 transition-colors duration-500 blur-3xl opacity-50" />
+      <div className="absolute inset-0 bg-blue-50 transition-colors duration-500 blur-3xl opacity-50" />
       
       <div ref={containerRef} className="relative z-10 w-full max-w-2xl px-6">
         
@@ -104,10 +88,10 @@ export default function SmileAssessment() {
                             <Smile size={48} className="text-blue-600" strokeWidth={1.5} />
                         </div>
                         <h2 className="text-4xl md:text-5xl font-sans font-bold text-navy">
-                            What does your <span className="text-blue-600">dream smile</span> look like?
+                            Help Us <span className="text-blue-600">Personalize</span> Your Care
                         </h2>
                         <p className="text-lg text-navy/60 max-w-md mx-auto">
-                            Take a quick assessment to discover your personalized treatment path.
+                            Answer a few quick questions to help us prioritize your care appropriately.
                         </p>
                         
                         <button 
@@ -122,74 +106,81 @@ export default function SmileAssessment() {
                     </div>
                 )}
 
-                {/* STATE: GOAL */}
-                {step === "goal" && (
+                {/* STATE: DISCOMFORT */}
+                {step === "discomfort" && (
                     <div className="space-y-8">
-                        <h3 className="text-3xl font-sans font-bold text-navy text-center">My primary goal is...</h3>
-                        <div className="grid md:grid-cols-3 gap-4">
-                            {["Whiter Teeth", "Straighter Smile", "Fix Gaps"].map((goal) => (
+                         <div className="text-center">
+                            <span className="inline-block px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-bold tracking-wider mb-4">QUESTION 1/3</span>
+                            <h3 className="text-3xl font-sans font-bold text-navy mb-3">Are you currently experiencing any dental discomfort?</h3>
+                            <p className="text-navy/60 text-sm">Your response helps us prioritise care appropriately.</p>
+                         </div>
+                        <div className="grid grid-cols-2 gap-4">
+                            {["Yes", "No"].map((option) => (
                                 <button
-                                    key={goal}
-                                    onClick={() => handleGoalSelect(goal)}
+                                    key={option}
+                                    onClick={() => handleDiscomfortSelect(option)}
                                     className={clsx(
-                                        "p-6 rounded-2xl border transition-all duration-300 text-left hover:scale-[1.02]",
-                                        answers.goal === goal 
+                                        "p-6 rounded-2xl border transition-all duration-300 text-center hover:scale-[1.02]",
+                                        answers.discomfort === option 
                                             ? "bg-blue-600 text-white border-blue-600 ring-4 ring-blue-100" 
                                             : "bg-slate-50 border-slate-100 hover:border-blue-200 text-navy"
                                     )}
                                 >
-                                    <div className="mb-4">
-                                        {goal === "Whiter Teeth" && <Zap size={32} className={answers.goal === goal ? "text-white" : "text-blue-300"} />}
-                                        {goal === "Straighter Smile" && <Smile size={32} className={answers.goal === goal ? "text-white" : "text-blue-300"} />}
-                                        {goal === "Fix Gaps" && <Activity size={32} className={answers.goal === goal ? "text-white" : "text-blue-300"} />}
-                                    </div>
-                                    <span className="font-semibold text-lg block">{goal}</span>
+                                    <span className="font-semibold text-xl block mb-2">{option}</span>
+                                    {option === "Yes" ? <AlertCircle className={clsx("mx-auto", answers.discomfort === option ? "text-white" : "text-red-400")} /> : <Smile className={clsx("mx-auto", answers.discomfort === option ? "text-white" : "text-green-400")} />}
                                 </button>
                             ))}
                         </div>
                     </div>
                 )}
 
-                {/* STATE: ANXIETY */}
-                {step === "anxiety" && (
-                    <div className="space-y-10 text-center">
-                        <h3 className="text-3xl font-sans font-bold text-navy">Dental Anxiety Level</h3>
-                        
-                        <div className="px-4">
-                            <input 
-                                type="range" 
-                                min="0" 
-                                max="100" 
-                                value={answers.anxiety}
-                                onChange={(e) => handleAnxietyChange(Number(e.target.value))}
-                                className="w-full h-2 bg-blue-100 rounded-lg appearance-none cursor-pointer accent-blue-600"
-                            />
-                            <div className="flex justify-between mt-4 font-medium text-navy/60 text-sm">
-                                <span>Zen Master (Relaxed)</span>
-                                <span>Very Nervous</span>
-                            </div>
-                            <div className="mt-8">
-                                <span className="inline-block px-4 py-2 rounded-lg bg-blue-50 text-blue-800 font-semibold border border-blue-100">
-                                    {answers.anxiety < 30 ? "I'm totally fine." : answers.anxiety < 70 ? "A little jittery." : "I need sedation."}
-                                </span>
-                            </div>
+                {/* STATE: CONCERN */}
+                {step === "concern" && (
+                    <div className="space-y-8">
+                        <div className="text-center">
+                            <span className="inline-block px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-bold tracking-wider mb-4">QUESTION 2/3</span>
+                            <h3 className="text-3xl font-sans font-bold text-navy">What is your primary concern at this time?</h3>
                         </div>
-
-                        <button 
-                            onClick={() => setStep("timeline")}
-                            className="px-8 py-3 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-colors shadow-lg shadow-blue-600/20"
-                        >
-                            Continue
-                        </button>
+                        <div className="grid md:grid-cols-2 gap-4">
+                            {[
+                                { label: "Oral discomfort or sensitivity", icon: AlertCircle },
+                                { label: "Smile enhancement", icon: Smile },
+                                { label: "Replacement of a missing tooth", icon: Activity },
+                                { label: "Preventive consultation", icon: Search }
+                            ].map((item) => (
+                                <button
+                                    key={item.label}
+                                    onClick={() => handleConcernSelect(item.label)}
+                                    className={clsx(
+                                        "p-4 rounded-xl border transition-all duration-300 text-left hover:scale-[1.02] flex items-center gap-4",
+                                        answers.concern === item.label 
+                                            ? "bg-blue-600 text-white border-blue-600 ring-2 ring-blue-100" 
+                                            : "bg-slate-50 border-slate-100 hover:border-blue-200 text-navy"
+                                    )}
+                                >
+                                    <div className={clsx("p-2 rounded-full", answers.concern === item.label ? "bg-white/20" : "bg-blue-50")}>
+                                        <item.icon size={20} className={clsx(answers.concern === item.label ? "text-white" : "text-blue-600")} />
+                                    </div>
+                                    <span className="font-medium">{item.label}</span>
+                                </button>
+                            ))}
+                        </div>
                     </div>
                 )}
 
                 {/* STATE: TIMELINE */}
                 {step === "timeline" && (
                     <div className="space-y-8">
-                        <h3 className="text-3xl font-sans font-bold text-navy text-center">When do you want to start?</h3>
+                        <div className="text-center">
+                            <span className="inline-block px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-bold tracking-wider mb-4">QUESTION 3/3</span>
+                            <h3 className="text-3xl font-sans font-bold text-navy">When would you like to plan your visit?</h3>
+                        </div>
                         <div className="space-y-3">
-                             {["Immediately", "Within 3 months", "Just Researching"].map((time) => (
+                             {[
+                                "At the earliest convenience",
+                                "Within the next week",
+                                "Within the next month"
+                             ].map((time) => (
                                 <button
                                     key={time}
                                     onClick={() => handleTimelineSelect(time)}
@@ -200,7 +191,10 @@ export default function SmileAssessment() {
                                             : "bg-slate-50 border-slate-100 hover:bg-blue-50 hover:border-blue-200 text-navy"
                                     )}
                                 >
-                                    <span className="font-medium text-lg">{time}</span>
+                                    <div className="flex items-center gap-3">
+                                        <Calendar size={18} className={clsx(answers.timeline === time ? "text-white/80" : "text-navy/40")} />
+                                        <span className="font-medium text-lg">{time}</span>
+                                    </div>
                                     {answers.timeline === time && <Check size={20} className="text-white" />}
                                 </button>
                              ))}
@@ -227,24 +221,24 @@ export default function SmileAssessment() {
                         <div className="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6 animate-bounce">
                             <Check size={40} className="text-blue-600" strokeWidth={3} />
                         </div>
-                        <h3 className="text-4xl font-sans font-bold text-navy">Perfect match found.</h3>
+                        <h3 className="text-4xl font-sans font-bold text-navy">Thank you for sharing!</h3>
                         <p className="text-lg text-navy/70 max-w-sm mx-auto">
-                            Based on your goals, we have a curated treatment plan ready for you.
+                            We have noted your preferences and are ready to assist you.
                         </p>
                         <div className="pt-6">
                             <a 
                                 href={`https://wa.me/919876543210?text=${encodeURIComponent(
-                                    `Hello, I completed the Smile Assessment.\n\n` +
-                                    `Goal: ${answers.goal || "Not specified"}\n` +
-                                    `Anxiety: ${answers.anxiety}/100\n` +
-                                    `Timeline: ${answers.timeline || "Not specified"}\n\n` +
-                                    `I would like to discuss my options.`
+                                    `Hello, I completed the Care Assessment.\n\n` +
+                                    `Discomfort: ${answers.discomfort}\n` +
+                                    `Concern: ${answers.concern}\n` +
+                                    `Timeline: ${answers.timeline}\n\n` +
+                                    `I would like to schedule an appointment.`
                                 )}`}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="text-blue-600 font-semibold underline decoration-blue-200 decoration-2 underline-offset-4 hover:text-blue-800"
                             >
-                                View Consultation Options
+                                Continue to Booking on WhatsApp
                             </a>
                         </div>
                     </div>

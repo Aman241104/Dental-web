@@ -6,31 +6,31 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 const testimonials = [
   {
     id: 1,
-    text: "I was looking for a dental clinic I could trust for a long time. I found it at Chahana Dental Studio! Professional approach to every client, quality treatment and pleasant atmosphere make this clinic unsurpassed. Highly recommended!",
-    name: "Anna P.",
+    text: "I recently visited Chahana Dental Studio for a teeth whitening treatment, and I had an excellent experience. Dr. Chahana Shah and her team were highly professional, knowledgeable, and made me feel comfortable throughout the procedure. The results exceeded my expectations, and I am extremely satisfied with my brighter, healthier smile. I highly recommend Dr. Chahana Shah and her clinic for anyone seeking quality dental care.",
+    name: "Jani Vismay",
     role: "Patient",
-    initials: "AP"
+    initials: "JV"
   },
   {
     id: 2,
-    text: "Thanks to Chahana Dental Studio, I regained confidence in myself. Their specialists did a great job with my teeth, and the consultation helped me understand how to care for them properly. Huge thanks for your work!",
-    name: "Maxim L.",
+    text: "Very professional and skilled, top to bottom. Cannot recommend them more highly. Dr Chahana is thorough and informative, and lets you know every step of the way what's going on so there are no surprises. Very calming as well. Thanks Dr Chahana and the team.",
+    name: "Manan Mehta",
     role: "Patient",
-    initials: "ML"
+    initials: "MM"
   },
   {
     id: 3,
-    text: "The level of technology here is incredible. I had a painless root canal treatment and the recovery was instant. The staff is polite and the clinic looks more like a luxury hotel than a hospital.",
-    name: "Sarah J.",
+    text: "Best Ambience, Well experience doctor...I went there to get my teeth cleaned, it was great, clean space, well skilled doctor, less fees and it didn't hurt at all and understand my problem and solved very well I suggest all my relatives and friends for any dental issues Thank you to dr chahana",
+    name: "H Shah",
     role: "Patient",
-    initials: "SJ"
+    initials: "HS"
   },
   {
     id: 4,
-    text: "Exceptional service from start to finish. The digital smile design preview convinced me to go ahead with veneers, and the result is exactly what I wanted. Worth every penny.",
-    name: "David R.",
+    text: "I had my root canal treatment and wisdom tooth removal surgery done at Chahana Dental Studio by Dr. Chahana, and the experience was excellent. Both procedures were handled very professionally and almost pain free. Dr. Chahana explained everything clearly and made me feel comfortable throughout. The clinic is very clean and hygienic. Highly recommended for anyone looking for safe and quality dental care",
+    name: "Parth Kella",
     role: "Patient",
-    initials: "DR"
+    initials: "PK"
   }
 ];
 
@@ -65,7 +65,7 @@ export default function Testimonials() {
           {testimonials.map((item) => (
             <div 
               key={item.id}
-              className="min-w-[85vw] md:min-w-[450px] snap-center bg-white border border-blue-600 rounded-[2rem] p-8 md:p-10 flex flex-col justify-between h-[350px] shadow-sm hover:shadow-lg transition-shadow duration-300"
+              className="min-w-[85vw] md:min-w-[450px] snap-center bg-white border border-blue-600 rounded-[2rem] p-8 md:p-10 flex flex-col justify-between shadow-sm hover:shadow-lg transition-shadow duration-300"
             >
               {/* Review Text */}
               <p className="text-lg md:text-xl font-sans leading-relaxed text-navy/80">

@@ -9,7 +9,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const stats = [
   { id: 1, value: 7, label: "Years of Experience", suffix: "+" },
-  { id: 2, value: 5000, label: "Happy Smiles", suffix: "+" },
+  { id: 2, value: 1000, label: "Patients Treated", suffix: "+" },
   { id: 3, value: 5, label: "Star Rating", suffix: ".0" },
 ];
 

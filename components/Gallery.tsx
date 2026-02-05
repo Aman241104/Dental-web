@@ -7,6 +7,7 @@ const cases = [
   {
     id: 1,
     title: "Veneer Reconstruction",
+    description: "Experience the transformation. Slide to see the detailed reconstruction and aesthetic improvements achieved by our specialists.",
     before: "/vanner_before.png", 
     after: "/vanner_after.png",
     zoom: "150%",      
@@ -14,12 +15,14 @@ const cases = [
   {
     id: 2,
     title: "Full Mouth Rehabilitation",
+    description: "Comprehensive restoration for a functional and beautiful smile. See how full mouth rehabilitation changes lives.",
     before: "/placeholder-before-1.jpg", // Reusing for now as we only have 1 pair
     after: "/placeholder-after-1.jpg",
   },
   {
     id: 3,
     title: "Invisalign Correction",
+    description: "Achieve a perfectly aligned smile discreetly. Witness the remarkable correction possible with Invisalign treatment.",
     before: "/Invisalign_before.png",
     after: "/Invisalign_after.png",
   },
@@ -130,14 +133,14 @@ export default function Gallery() {
                             0{index + 1}
                         </span>
                         <h3 className="text-3xl font-serif text-navy mb-6 relative z-10">{items.title}</h3>
-                        <p className="text-navy/70 leading-relaxed mb-8">
-                            Experience the transformation. Slide to see the detailed reconstruction and aesthetic improvements achieved by our specialists.
+                        <p className="text-navy/70 leading-relaxed mb-8 hidden md:block">
+                            {items.description}
                         </p>
                         <div className="h-1 w-20 bg-blue-600/20 rounded-full mx-auto md:mx-0" />
                    </div>
 
                    {/* Before/After Compoonent */}
-                   <div className="w-full md:w-2/3 h-[50vh] min-h-[400px]">
+                   <div className="w-full md:w-2/3 h-[300px] md:h-[50vh] md:min-h-[400px]">
                        <BeforeAfterSlider before={items.before} after={items.after} zoom={items.zoom} />
                    </div>
                 </div>
