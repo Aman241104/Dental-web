@@ -74,13 +74,9 @@ export default function Testimonials() {
 
               {/* User Profile */}
               <div className="flex items-center gap-4 mt-6">
-                 <div className="w-12 h-12 rounded-full bg-slate-200 overflow-hidden flex items-center justify-center border border-blue-100">
+                 <div className="w-16 h-16 rounded-full bg-blue-50 overflow-hidden flex items-center justify-center border border-blue-100 shrink-0">
                     {/* Placeholder image logic or actual image */}
-                    {item.id % 2 === 0 ? (
-                         <img src={`https://i.pravatar.cc/150?u=${item.name}`} alt={item.name} className="w-full h-full object-cover" />
-                    ) : (
-                        <span className="text-blue-600 font-bold text-sm">{item.initials}</span>
-                    )}
+                     <span className="text-blue-600 font-bold text-lg">{item.initials}</span>
                  </div>
                  <div>
                      <h4 className="font-bold text-navy text-base">{item.name}</h4>
