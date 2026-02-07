@@ -29,13 +29,17 @@ export default function BookingModal() {
   if (!isOpen) return null;
 
   const handleWhatsAppRedirect = () => {
-    if (!date || !time) {
-      alert("Please select both a date and time.");
+    if (!date || !time || !name.trim()) {
+      alert("Please provide your name, preferred date, and time.");
       return;
     }
 
-    const message = `Hello, I would like to schedule a visit.${name ? ` My name is ${name}.` : ""} I am interested in an appointment on ${date} at ${time}.`;
-    const url = `https://wa.me/919876543210?text=${encodeURIComponent(message)}`;
+    // Format date from yyyy-mm-dd to dd-mm-yyyy
+    const [year, month, day] = date.split("-");
+    const formattedDate = `${day}-${month}-${year}`;
+
+    const message = `Hello, I would like to schedule a visit. My name is ${name}. I am interested in an appointment on ${formattedDate} at ${time}.`;
+    const url = `https://wa.me/916353070793?text=${encodeURIComponent(message)}`;
     window.open(url, "_blank");
     closeBooking();
   };
@@ -64,7 +68,7 @@ export default function BookingModal() {
         <div className="space-y-6">
             {/* Name Input */}
             <div className="space-y-2">
-                <label className="text-xs font-bold uppercase tracking-wider text-navy/40 pl-2">Your Name (Optional)</label>
+                <label className="text-xs font-bold uppercase tracking-wider text-navy/40 pl-2">Your Name</label>
                 <input 
                     type="text" 
                     value={name}
@@ -79,10 +83,27 @@ export default function BookingModal() {
                 <label className="text-xs font-bold uppercase tracking-wider text-navy/40 pl-2">Preferred Date</label>
                 <div className="relative">
                     <input 
-                        type="date" 
-                        value={date}
-                        onChange={(e) => setDate(e.target.value)}
-                        className="w-full bg-white border border-blue-100 rounded-2xl px-6 py-4 text-navy focus:outline-none focus:border-blue-500 focus:shadow-lg focus:shadow-blue-500/10 transition-all font-sans appearance-none"
+                        type="text"
+                        onFocus={(e) => {
+                            e.target.type = "date";
+                            e.target.value = date; // Restore valid date format for picker
+                            e.target.showPicker?.();
+                        }}
+                        onBlur={(e) => {
+                             e.target.type = "text";
+                             // Format display if date exists
+                             if (date) {
+                                const [y, m, d] = date.split("-");
+                                e.target.value = `${d}-${m}-${y}`;
+                             } else {
+                                e.target.value = "";
+                             }
+                        }}
+                        onChange={(e) => {
+                             setDate(e.target.value);
+                        }}
+                        placeholder="dd-mm-yyyy"
+                        className="w-full bg-white border border-blue-100 rounded-2xl px-6 py-4 text-navy focus:outline-none focus:border-blue-500 focus:shadow-lg focus:shadow-blue-500/10 transition-all font-sans appearance-none [&::-webkit-calendar-picker-indicator]:hidden [&::-webkit-inner-spin-button]:hidden"
                     />
                     <Calendar className="absolute right-6 top-1/2 -translate-y-1/2 text-blue-500 pointer-events-none" size={20} />
                 </div>

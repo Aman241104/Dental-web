@@ -132,10 +132,10 @@ export default function ContactFooter() {
 
                 {/* Navigation Links */}
                 <div className="flex gap-8 text-sm font-medium text-navy uppercase tracking-wide">
-                    <Link href="/" className="hover:text-blue-600 transition-colors">Home</Link>
-                    <Link href="/about" className="hover:text-blue-600 transition-colors">About</Link>
-                    <Link href="/services" className="hover:text-blue-600 transition-colors">Services</Link>
-                    <Link href="/contact" className="hover:text-blue-600 transition-colors">Contact</Link>
+                    <Link href="#hero-section" className="hover:text-blue-600 transition-colors">Home</Link>
+                    <Link href="#about" className="hover:text-blue-600 transition-colors">About</Link>
+                    <Link href="#services" className="hover:text-blue-600 transition-colors">Services</Link>
+                    <Link href="#contact" className="hover:text-blue-600 transition-colors">Contact</Link>
                 </div>
 
                 {/* Socials */}

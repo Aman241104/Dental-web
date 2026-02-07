@@ -227,7 +227,7 @@ export default function SmileAssessment() {
                         </p>
                         <div className="pt-6">
                             <a 
-                                href={`https://wa.me/919876543210?text=${encodeURIComponent(
+                                href={`https://wa.me/916353070793?text=${encodeURIComponent(
                                     `Hello, I completed the Care Assessment.\n\n` +
                                     `Discomfort: ${answers.discomfort}\n` +
                                     `Concern: ${answers.concern}\n` +

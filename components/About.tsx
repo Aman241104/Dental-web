@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { gsap, useGSAP } from "@/lib/gsapConfig";
 import { Play, Pause, Volume2, VolumeX } from "lucide-react";
 import clsx from "clsx";
@@ -46,6 +46,25 @@ export default function About() {
     },
     { scope: containerRef }
   );
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsMuted(!entry.isIntersecting);
+      },
+      {
+        threshold: 0.6, 
+      }
+    );
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => {
+        observer.disconnect();
+    };
+  }, []);
 
   const togglePlay = () => {
     if (videoRef.current) {
@@ -203,7 +222,7 @@ export default function About() {
             
             <div className="flex gap-4 pt-4">
                 <a 
-                    href={`https://wa.me/919876543210?text=${encodeURIComponent("Hello, I would like to schedule a visit to Chahana Dental Studio.")}`}
+                    href={`https://wa.me/916353070793?text=${encodeURIComponent("Hello, I would like to schedule a visit to Chahana Dental Studio.")}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="px-8 py-4 rounded-full bg-blue-600 text-white hover:bg-blue-700 transition-all duration-300 font-medium shadow-lg shadow-blue-600/20 inline-block"
