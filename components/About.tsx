@@ -60,10 +60,7 @@ export default function About() {
 
   const toggleMute = (e: React.MouseEvent) => {
     e.stopPropagation();
-    if (videoRef.current) {
-        videoRef.current.muted = !isMuted;
-        setIsMuted(!isMuted);
-    }
+    setIsMuted(!isMuted);
   };
 
   const handleTimeUpdate = () => {
@@ -134,7 +131,7 @@ export default function About() {
                     onTimeUpdate={handleTimeUpdate}
                     onEnded={handleVideoEnd}
                     autoPlay
-                    muted
+                    muted={isMuted}
                     loop
                     playsInline
                 />
