@@ -24,8 +24,8 @@ export const metadata: Metadata = {
   title: "Chahana Dental Studio | Elevate Your Smile",
   description: "Luxurious, high-tech dental boutique in Ahmedabad offering painless laser treatments and cosmetic makeovers.",
   icons: {
-    icon: "/sm_logo.png",
-    shortcut: "/sm_logo.png",
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
     apple: "/sm_logo.png",
   },
   openGraph: {
